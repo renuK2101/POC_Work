@@ -1,8 +1,17 @@
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Identity.Web;
 using Microsoft.Identity.Web.UI;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Configure forwarded headers for reverse proxy support (Azure Container Apps, App Gateway, etc.)
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
+});
 
 // Add Azure AD authentication
 builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
@@ -37,6 +46,9 @@ builder.Services.AddAuthorization(options =>
 
 var app = builder.Build();
 
+// Use forwarded headers middleware (must be early in pipeline)
+app.UseForwardedHeaders();
+
 // Configure the HTTP request pipeline
 if (!app.Environment.IsDevelopment())
 {
@@ -60,3 +72,6 @@ app.MapRazorPages();
 app.MapControllers(); // For Microsoft Identity UI controllers
 
 app.Run();
+
+// Make the implicit Program class public for integration tests
+public partial class Program { }
