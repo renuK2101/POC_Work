@@ -6,13 +6,9 @@ WORKDIR /src
 COPY NetFramework30WebApp-Modernized.csproj ./
 RUN dotnet restore "NetFramework30WebApp-Modernized.csproj"
 
-# Copy everything else and build
+# Copy everything else and publish directly (skip separate build step)
 COPY . .
-RUN dotnet build "NetFramework30WebApp-Modernized.csproj" -c Release -o /app/build
-
-# Publish stage
-FROM build AS publish
-RUN dotnet publish "NetFramework30WebApp-Modernized.csproj" -c Release -o /app/publish --no-restore
+RUN dotnet publish "NetFramework30WebApp-Modernized.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
@@ -25,8 +21,8 @@ EXPOSE 8080
 RUN adduser --disabled-password --gecos '' appuser && chown -R appuser /app
 USER appuser
 
-# Copy published app from publish stage
-COPY --from=publish /app/publish .
+# Copy published app from build stage
+COPY --from=build /app/publish .
 
 # Set environment variables
 ENV ASPNETCORE_URLS=http://+:8080
