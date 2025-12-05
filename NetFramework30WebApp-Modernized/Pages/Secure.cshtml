@@ -1,0 +1,69 @@
+@page
+@model NetFramework30WebApp_Modernized.Pages.SecureModel
+@{
+    ViewData["Title"] = "Secure Page";
+}
+
+<h2>Secure Page</h2>
+<p>
+    This is a secure page that can only be accessed by authenticated users who are members of specific Azure AD roles.
+</p>
+
+<h3>Your Authentication Information</h3>
+<div class="userInfo">
+    <p>
+        <strong>User Name:</strong> @Model.UserName
+    </p>
+    <p>
+        <strong>Authentication Type:</strong> @Model.AuthenticationType
+    </p>
+    <p>
+        <strong>Is Authenticated:</strong> @Model.IsAuthenticated
+    </p>
+    <p>
+        <strong>Roles:</strong>
+    </p>
+    <ul>
+        @if (Model.UserRoles?.Any() == true)
+        {
+            @foreach (var role in Model.UserRoles)
+            {
+                <li>@role</li>
+            }
+        }
+        else
+        {
+            <li>No roles or groups assigned</li>
+        }
+    </ul>
+    <p>
+        <strong>Authorization Status:</strong>
+        <span style="color: @(Model.IsAuthorized ? "green" : "red"); font-weight: bold;">
+            @(Model.IsAuthorized ? "Authorized" : "Not Authorized")
+        </span>
+    </p>
+</div>
+
+<h3>Secret Content</h3>
+@if (Model.IsAuthorized)
+{
+    <div>
+        <p>
+            This is confidential information that only authorized users can see.
+        </p>
+        <p>
+            You are seeing this because you are a member of an authorized Azure AD role.
+        </p>
+    </div>
+}
+else
+{
+    <div class="error">
+        <p>
+            You are authenticated but not authorized to view the secret content.
+        </p>
+        <p>
+            You must be a member of one of the authorized Azure AD roles to see the secret content.
+        </p>
+    </div>
+}

@@ -1,0 +1,26 @@
+﻿@page
+@model NetFramework30WebApp_Modernized.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h2>Welcome to your new site!</h2>
+<p>
+    This is a simple home page created for your ASP.NET application.
+</p>
+<p>
+    You can use this as a starting point for your web application.
+</p>
+<h3>Getting Started</h3>
+<p>
+    To get started with ASP.NET, you can:
+</p>
+<ul>
+    <li>Add more pages to your site</li>
+    <li>Create forms to collect user input</li>
+    <li>Connect to databases using Entity Framework Core</li>
+    <li>Use Razor Pages to create rich user interfaces</li>
+</ul>
+<p class="dateTime">
+    @Model.CurrentDateTime
+</p>
