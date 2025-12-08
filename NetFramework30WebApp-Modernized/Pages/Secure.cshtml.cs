@@ -4,8 +4,6 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.ApplicationInsights;
 using System.Security.Claims;
 
-namespace NetFramework30WebApp_Modernized.Pages;
-
 [Authorize] // Require authentication
 public class SecureModel : PageModel
 {

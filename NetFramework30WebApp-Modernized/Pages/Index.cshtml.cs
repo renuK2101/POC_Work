@@ -2,8 +2,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
 
-namespace NetFramework30WebApp_Modernized.Pages;
-
 [AllowAnonymous] // Allow anonymous access to home page
 public class IndexModel : PageModel
 {
