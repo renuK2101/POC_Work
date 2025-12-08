@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
+namespace NetFramework30WebApp_Modernized.Pages;
+
 [AllowAnonymous] // Allow anonymous access to error page
 public class AccessDeniedModel : PageModel
 {
