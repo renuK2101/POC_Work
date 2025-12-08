@@ -1,5 +1,5 @@
 # Build stage
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
 # Copy csproj and restore dependencies
@@ -8,7 +8,7 @@ RUN dotnet restore "NetFramework30WebApp-Modernized.csproj"
 
 # Copy everything else and publish directly (skip separate build step)
 COPY . .
-RUN dotnet publish "NetFramework30WebApp-Modernized.csproj" -c Debug -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "NetFramework30WebApp-Modernized.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 # Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
