@@ -1,0 +1,11 @@
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.csproj.AssemblyReference.cache
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\rpswa.dswa.cache.json
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.AssemblyInfoInputs.cache
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.AssemblyInfo.cs
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.csproj.CoreCompileInputs.cache
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.RazorAssemblyInfo.cache
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.RazorAssemblyInfo.cs
+C:\Users\v-renukumari\source\repos\migration_aca\NetFramework30WebApp-Modernized\obj\Release\net8.0\NetFramework30WebApp-Modernized.sourcelink.json

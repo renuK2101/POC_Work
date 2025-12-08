@@ -1,0 +1,40 @@
+# Example Terraform variables file
+# Copy this file to terraform.tfvars and update with your values
+# DO NOT commit terraform.tfvars to source control (it contains sensitive data)
+
+# General Configuration
+environment         = "dev"
+location            = "eastus"
+resource_group_name = "rg-netframework30-modernized-dev"
+project_name        = "netframework30"
+
+# Azure AD Configuration (from your App Registration)
+# Get these values from Azure Portal > Azure Active Directory > App registrations
+azure_ad_tenant_id = "your-tenant-id-here"          # Example: "12345678-1234-1234-1234-123456789012"
+azure_ad_client_id = "your-client-id-here"          # Example: "87654321-4321-4321-4321-210987654321"
+
+# Container Registry Configuration
+acr_sku = "Basic" # Options: Basic, Standard, Premium
+
+# Container Apps Configuration
+container_app_min_replicas = 1
+container_app_max_replicas = 10
+container_cpu               = 0.5
+container_memory            = "1Gi"
+container_image_name        = "netframework30webapp-modernized"
+container_image_tag         = "latest"
+target_port                 = 8080
+
+# Log Analytics Configuration
+log_analytics_retention_days = 30
+
+# Tags
+tags = {
+  Environment = "Development"
+  Project     = "NetFramework30-Modernized"
+  ManagedBy   = "Terraform"
+  Framework   = "DotNet8"
+  Platform    = "ContainerApps"
+  Owner       = "YourName"
+  CostCenter  = "YourCostCenter"
+}
