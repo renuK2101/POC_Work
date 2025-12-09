@@ -11,6 +11,14 @@ namespace NetFramework30WebApp_Modernized
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            // Configure forwarded headers for HTTPS behind proxy (Azure Container Apps)
+            builder.Services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+                options.KnownNetworks.Clear();
+                options.KnownProxies.Clear();
+            });
+
             // Add Azure AD authentication
             builder.Services.AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
                 .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
@@ -43,6 +51,9 @@ namespace NetFramework30WebApp_Modernized
             });
 
             var app = builder.Build();
+
+            // Use forwarded headers FIRST - must be before other middleware
+            app.UseForwardedHeaders();
 
             // Configure the HTTP request pipeline
             if (!app.Environment.IsDevelopment())
