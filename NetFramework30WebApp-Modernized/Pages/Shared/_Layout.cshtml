@@ -15,11 +15,11 @@
             @if (User.Identity?.IsAuthenticated == true)
             {
                 <span>Welcome <span class="bold">@(User.Identity.Name ?? "User")</span>!</span>
-                [ <a asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Log Out</a> ]
+                <a asp-page="/Account/SignOut">[Log Out]</a>
             }
             else
             {
-                [ <a asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignIn">Log In</a> ]
+                <a asp-page="/Account/SignIn">[Log In]</a>
             }
         </div>
         <div class="clear"></div>
